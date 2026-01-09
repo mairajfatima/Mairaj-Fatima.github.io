@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mairaj Fatima - Data Analyst Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f9fafb;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6366f1;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #6366f1;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 0.8s ease 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1f2937;
+        }
+
+        /* Work Experience Styles */
+        .experience-timeline {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .experience-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            border-left: 4px solid #6366f1;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .experience-header h3 {
+            font-size: 1.5rem;
+            color: #1f2937;
+            margin: 0;
+        }
+
+        .experience-company {
+            color: #6366f1;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .experience-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .experience-location,
+        .experience-duration {
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        .experience-details {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+        .experience-details li {
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            position: relative;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        .experience-details li:before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #6366f1;
+            font-weight: bold;
+        }
+
+        /* Achievements Styles */
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .achievement-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .achievement-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-card h3 {
+            font-size: 1.25rem;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-year {
+            color: #6366f1;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-card p {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* Certifications Styles */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .certification-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 3px solid #6366f1;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .cert-header {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .cert-icon {
+            font-size: 2.5rem;
+            flex-shrink: 0;
+        }
+
+        .cert-header h3 {
+            font-size: 1.2rem;
+            color: #1f2937;
+            margin-bottom: 0.25rem;
+            text-align: left;
+        }
+
+        .cert-issuer {
+            color: #6366f1;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .cert-description {
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .cert-link {
+            display: inline-block;
+            color: #6366f1;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .cert-link:hover {
+            color: #4f46e5;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: #4b5563;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .skill-tag {
+            padding: 8px 16px;
+            background: #e0e7ff;
+            color: #6366f1;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+
+        .project-content p {
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 6px 16px;
+            background: #6366f1;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+
+        .project-link:hover {
+            background: #4f46e5;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 12px 24px;
+            background: #f3f4f6;
+            color: #374151;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .contact-link:hover {
+            background: #e5e7eb;
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Mairaj Fatima</div>
+            <ul class="nav-links">
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="profile-container">
+                <img src="https://i.ibb.co/tMrfHSJy/profile-photo.jpg" alt="Mairaj Fatima" class="profile-image">
+            </div>
+            <h1>Hi, I'm Mairaj Fatima</h1>
+            <p>Data Analyst | Power BI & Tableau Expert | Python & SQL Specialist</p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" style="background: white;">
+        <div class="container">
+            <h2>Work Experience</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Data Analyst Intern</h3>
+                        <span class="experience-company">Intelura</span>
+                    </div>
+                    <div class="experience-meta">
+                        <span class="experience-location">📍 Kent, England (Remote)</span>
+                        <span class="experience-duration">📅 Nov 2025 – Jan 2026 (Ongoing)</span>
+                    </div>
+                    <ul class="experience-details">
+                        <li>Collected and validated 1000+ business leads weekly across 5+ client projects with 80% data accuracy through systematic validation processes</li>
+                        <li>Designed interactive Looker Studio dashboards and automated Google Sheets workflows, improving reporting efficiency by 35%</li>
+                        <li>Delivered end-to-end business intelligence services by analyzing data and presenting actionable visual insights</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <h3>Data Analyst Intern</h3>
+                        <span class="experience-company">Elevoo Pathways</span>
+                    </div>
+                    <div class="experience-meta">
+                        <span class="experience-location">📍 Egypt (Remote)</span>
+                        <span class="experience-duration">📅 July 2025 – Aug 2025</span>
+                    </div>
+                    <ul class="experience-details">
+                        <li>Collected and cleaned retail sales data using web scraping and Python, performing data validation to ensure accuracy</li>
+                        <li>Conducted exploratory data analysis (EDA) with Python and SQL to identify sales trends and customer patterns</li>
+                        <li>Designed interactive Excel dashboards with pivot tables and presented insights through data storytelling</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a passionate Data Analyst with a strong foundation in data visualization, statistical analysis, and business intelligence. Currently pursuing my Bachelor's degree in Information Technology at the University of Chakwal with a CGPA of 3.80/4.00.</p>
+                    <p style="margin-top: 1rem;">With hands-on experience at Intelura and Elevoo Pathways, I specialize in transforming raw data into actionable insights through interactive dashboards and comprehensive data analysis. I'm skilled in Power BI, Tableau, Python, and SQL, with a proven track record of improving reporting efficiency and delivering data-driven solutions.</p>
+                    <div class="skills">
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Looker Studio</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Excel</span>
+                        <span class="skill-tag">Data Cleaning</span>
+                        <span class="skill-tag">EDA</span>
+                        <span class="skill-tag">KPI Reporting</span>
+                        <span class="skill-tag">Web Scraping</span>
+                    </div>
+                </div>
+                <div class="about-text">
+                    <p><strong>Education:</strong> BSc Information Technology, University of Chakwal (CGPA: 3.80/4.00)</p>
+                    <p style="margin-top: 1rem;"><strong>Experience:</strong> Data Analyst Intern at Intelura (Nov 2025 - Present) & Elevoo Pathways</p>
+                    <p style="margin-top: 1rem;"><strong>Location:</strong> Chakwal, Punjab, Pakistan</p>
+                    <p style="margin-top: 1rem;"><strong>Achievements:</strong> PMYLS Awardee 2023, Honhaar Scholarship Recipient, Meta Hacker Cup 2025 Participant (Ranked 1562nd in Round 1)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section id="achievements" style="background: white;">
+        <div class="container">
+            <h2>Honors & Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <h3>Prime Minister Youth Laptop Scheme (PMYLS)</h3>
+                    <p class="achievement-year">2023</p>
+                    <p>Merit-based selection in the nationwide Prime Minister Youth Laptop Scheme, recognizing academic excellence across Pakistani universities.</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎓</div>
+                    <h3>Honhaar Scholarship</h3>
+                    <p class="achievement-year">2021 - 2025</p>
+                    <p>Recipient of the prestigious Honhaar Scholarship throughout my undergraduate degree for consistent academic performance.</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">💻</div>
+                    <h3>Meta Hacker Cup 2025</h3>
+                    <p class="achievement-year">2025</p>
+                    <p>Ranked 1562nd globally in Round 1 and proceeded to Round 2, competing with thousands of programmers worldwide in Meta's prestigious coding competition.</p>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎯</div>
+                    <h3>Vice President - Al-Biruni Science Society</h3>
+                    <p class="achievement-year">Jan 2025 – July 2025</p>
+                    <p>Led Sci Spark 2025 university-wide STEM event with 200+ students and coordinated AI workshops, bridging academic theory with industry applications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <h2>Certifications</h2>
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <div class="cert-header">
+                        <div class="cert-icon">📊</div>
+                        <div>
+                            <h3>IBM Data Analyst Professional Certificate</h3>
+                            <p class="cert-issuer">IBM</p>
+                        </div>
+                    </div>
+                    <p class="cert-description">Comprehensive certification covering data analysis, visualization, Python, SQL, and statistical analysis.</p>
+                    <a href="https://drive.google.com/file/d/1kghMKoFiFOH1sgJmgV9OCGZlbHQmRyHR/view?usp=sharing" target="_blank" class="cert-link">View Certificate →</a>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-header">
+                        <div class="cert-icon">🔍</div>
+                        <div>
+                            <h3>Data Analytics Job Simulation</h3>
+                            <p class="cert-issuer">Deloitte Australia (Forage)</p>
+                        </div>
+                    </div>
+                    <p class="cert-description">Completed forensic technology simulation analyzing gender pay gaps, building dashboards, and processing JSON data for compliance insights.</p>
+                    <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/9PBTqmSxAf6zZTseP/io9DzWKe3PTsiS6GG_9PBTqmSxAf6zZTseP_yzfpFEpPzW92w8GcC_1752385467242_completion_certificate.pdf" target="_blank" class="cert-link">View Certificate →</a>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-header">
+                        <div class="cert-icon">🤖</div>
+                        <div>
+                            <h3>The Internet of Agents Hackathon</h3>
+                            <p class="cert-issuer">Lablab.ai</p>
+                        </div>
+                    </div>
+                    <p class="cert-description">Participated in AI agents hackathon, building innovative solutions using cutting-edge artificial intelligence technologies.</p>
+                    <a href="https://lablab.ai/u/@mairaj/cmg2llfdb001w7d0sgdxqdo7y" target="_blank" class="cert-link">View Profile →</a>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-header">
+                        <div class="cert-icon">🏅</div>
+                        <div>
+                            <h3>Meta Hacker Cup 2025</h3>
+                            <p class="cert-issuer">Meta (Facebook)</p>
+                        </div>
+                    </div>
+                    <p class="cert-description">Official participant certificate for competing in Meta's global competitive programming competition.</p>
+                    <a href="https://web.facebook.com/codingcompetitions/hacker-cup/2025/certificate/24771778862454613?source=facebook" target="_blank" class="cert-link">View Certificate →</a>
+                </div>
+
+                <div class="certification-card">
+                    <div class="cert-header">
+                        <div class="cert-icon">🎓</div>
+                        <div>
+                            <h3>Calico Fall 2025</h3>
+                            <p class="cert-issuer">UC Berkeley</p>
+                        </div>
+                    </div>
+                    <p class="cert-description">Participated in UC Berkeley's competitive programming contest, demonstrating algorithmic problem-solving skills.</p>
+                    <a href="https://calico.cs.berkeley.edu/certificates?contest=fa25&id=3871" target="_blank" class="cert-link">View Certificate →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" style="background: white;">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://i.ibb.co/H0p4wz6/Habitro-Project.png" alt="Habitro AI Habit Tracker" class="project-image">
+                    <div class="project-content">
+                        <h3>Habitro - AI-Driven Habit Tracking App</h3>
+                        <p>Developed an AI-based habit tracking application with behavioral insights dashboards featuring heatmaps and charts. Built with Python backend for AI logic and data processing, including comprehensive UML diagrams and wireframes.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mairajfatima" class="project-link" target="_blank">View Project</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://i.ibb.co/k2bdfd6d/pizza-sales-sql.jpg" alt="Pizza Sales SQL Analysis" class="project-image">
+                    <div class="project-content">
+                        <h3>Pizza Sales SQL Analysis</h3>
+                        <p>Comprehensive SQL analysis of pizza sales data including revenue trends, best-selling products, and customer behavior patterns. Performed complex queries to extract business insights and optimize sales strategies.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mairajfatima/pizza-sales-sql-analysis" class="project-link" target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://i.ibb.co/QvY1yfyR/ecommerce.jpg" alt="E-commerce Power BI Dashboard" class="project-image">
+                    <div class="project-content">
+                        <h3>E-commerce Sales Dashboard (Power BI)</h3>
+                        <p>Interactive Power BI dashboard analyzing e-commerce sales performance with KPIs, trend analysis, and customer segmentation. Features dynamic filtering and drill-down capabilities for detailed insights.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mairajfatima/powerbi-ecommerce-sales-dashboard" class="project-link" target="_blank">View on GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://i.ibb.co/cSD9FwNS/coffee-project.jpg" alt="Coffee Sales Dashboard" class="project-image">
+                    <div class="project-content">
+                        <h3>Coffee Sales Performance Dashboard</h3>
+                        <p>Built an interactive Excel dashboard analyzing sales trends, peak hours, and customer behavior for Maven Roasters. Utilized pivot tables, formulas, and KPIs to identify top products and revenue drivers.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/mairajfatima" class="project-link" target="_blank">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" style="background: white;">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <p>I'm always open to new opportunities and collaborations in data analytics and business intelligence. Feel free to reach out!</p>
+                <div class="contact-links">
+                    <a href="mailto:mairajawan111@gmail.com" class="contact-link">
+                        📧 mairajawan111@gmail.com
+                    </a>
+                    <a href="tel:+923348609079" class="contact-link">
+                        📱 03348609079
+                    </a>
+                    <a href="https://github.com/mairajfatima" target="_blank" class="contact-link">
+                        💻 GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/mairaj-fatima-62207a310/" target="_blank" class="contact-link">
+                        💼 LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Mairaj Fatima. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation for sections
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
